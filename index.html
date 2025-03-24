@@ -1,16 +1,83 @@
-<!DOCTYPE html>
+
+!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-  Hello world
+  <title>Blake VR scene</title>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+</head> 
   <script src="script.js"></script>
+<body>
+  <a-scene>
+    <!-- Video -->
+        <video id="videoclip" loop="true" src="tvAssets/ironGolem.mp4" crossorigin="anonymous" preload="auto"></video>
+        <img id="play" src="tvAssets/btnPlay.png" preload="auto">
+        <img id="pause" src="tvAssets/btnPause.png" preload="auto">
+        <img id="tv_background" src="tvAssets/tv_background.jpg" preload="auto">
+    </a-assets>
+
+    </a-assets>
+    <a-entity environment="preset: tron; dressingAmount: 500" </a-entity>
+      <!-- Start of house -->
+      <a-cylinder id="floor" position="0 0 0" radius="7.5" color="black" height="0.1"></a-cylinder>
+      <a-box id="box1" position="0  1.473  4.907" rotation="0  0  0" scale="10  3  0.2 " color="white"></a-box>
+      <a-box id="box2" position="0  1.473 -4.907" rotation="0  0  0" scale="10  3  0.2 " color="white"></a-box>
+      <a-box id="box3" position="5.049  1.454  -0.008" rotation="0  -90  0" scale="10  3  0.2 " color="white"></a-box>
+      <a-box id="box4" position="-5.049  1.454  -0.008" rotation="0  -90  0" scale="10  3  0.2 " color="white"></a-box>
+      <a-cylinder id="triangle_front" segments-radial="3" position="0  3.874 4.907" rotation="-90  0  0"
+        scale="5.774  0.2  1.8" color="black"></a-cylinder>
+      <a-cylinder id="triangle_back" segments-radial="3" position="0  3.874 -4.907" rotation="-90  0  0"
+        scale="5.774  0.2  1.8" color="black"></a-cylinder>
+      <a-box id="roof_right" position="2.580  4.328  0" rotation="28.433  90  0" scale="10.931 0.20  6.110"
+        color="black"></a-box>
+      <a-box id="roof_right" position="-2.599  4.3321  -0.017" rotation="28.433  -90  0" scale="10.931 0.20  6.130"
+        color="black"></a-box>
+      <!-- art on walls -->
+      <a-box id="frame1" position="0 1.696 -4.841" rotation="0 0 0" scale="3 3 0.2" src="images/picture_frame.jpg">
+        <a-plane id="art1" src="images/my_sky.jpg" scale="0.5  0.5  0.5" rotation="0 0 0"
+          position="0.002  0.002  0.519"></a-plane>
+      </a-box>
+    <!--I will sit with you and show you how to move the art -->
+      <a-plane id="art2" src="images/pickleCase.webp" scale="0.5  0.5  0.5" rotation="0 0 0" position="2.86  1.607  -4.750"></a-plane> <!-- change this image - it is from shutershock which is a paid image section: also name is not what hte image is-->
+      <a-plane id="art3" src="images/personRoyalty.webp" scale="0.5  0.5  0.5" rotation="0 0 0"
+        position="-3.222  1.607  -4.766"></a-plane><!-- change this image - it is from shutershock which is a paid image section: also name is not what hte image is-->
+
+      <!-- 3d model -->
+      <a-obj-model id="3dModel1" src="images/tinker.obj" mtl="images/obj.mtl" position="0.494 -0.476 31.810"
+        rotation="-90 90 0" scale="0.3 0.3 0.3"></a-obj-model>
+      <!-- update this comment -->
+      <a-entity>
+        <a-video src="#videoclip" position="-4.872 1.600 1.468" rotation="0 90 0" width="2" height="1.125"></a-video>
+        <!-- TV background -->
+        <a-plane id="videoControls" position="-4.869 0.854 1.471" scale="2 0.386 1.714" rotation="0 90 0" opacity="1" src="#tv_background">
+          <!-- Play button -->
+          <a-plane id="vidplaybox" src="#play" class="clickable" scale="0.122 0.678 0.122" position="-0.350 0 .01" shader="flat"  transparent="true" videoplayer></a-plane>
+          <!-- Stop button -->
+          <a-plane id="vidpausebox" src="#pause" class="clickable" scale="0.122 0.678 0.122" position="0.350 0 .01" shader="flat"  transparent="true" videopauser></a-plane>
+        </a-plane>
+      </a-entity>
+      <a-entity cursor="rayOrigin: mouse"></a-entity>
+
+        </a-box>
+        <!-- Movement-->
+
+        <!-- Camera + controllers rig -->
+
+        <a-entity id="rig">
+
+          <a-camera position="0 1.6 0"></a-camera>
+
+      <!-- left hand controller with laser pointer -->
+
+          <a-entity laser-controls="hand: left" ></a-entity>
+
+          <a-entity oculus-touch-controls="hand: right" oculus-thumbstick-controls></a-entity>
+
+        </a-entity>
+  </a-scene>
 </body>
 
 </html>
